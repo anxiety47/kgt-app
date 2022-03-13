@@ -1,0 +1,28 @@
+@import 'src/assets/css/colors.scss'
+@import 'src/assets/css/forms.scss'
+
+form
+  margin: 0 auto
+  max-width: 50%
+  width: 20rem
+  display: flex
+  flex-direction: column
+  gap: 1rem
+
+  .form-element
+    display: flex
+    flex-direction: column
+
+    input
+      margin: 1rem 0
+      height: $input-height
+      padding: $input-padding
+      font-size: $input-font-size
+
+  button[type=submit]
+    height: $button-height
+    background-color: $kgt-gray
+    color: $white
+    border: none
+    border-radius: $button-border-radius
+    font-size: $button-font-size
