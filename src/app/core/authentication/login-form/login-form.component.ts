@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -14,11 +15,15 @@ export class LoginFormComponent implements OnInit {
   public errorMessage: string = '';
   private $loginSubscription: Subscription = new Subscription();
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthenticationService) {
-    this.form = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthenticationService,
+    private route: ActivatedRoute,
+    private router: Router) {
+      this.form = this.formBuilder.group({
+        email: ['', Validators.required],
+        password: ['', Validators.required]
+      });
   }
 
   public ngOnInit(): void {
@@ -31,6 +36,7 @@ export class LoginFormComponent implements OnInit {
         console.log(data)
         // navigate to main page
         this.errorMessage = '';
+        this.router.navigate(['home'], { relativeTo: this.route.parent });
       },
       error => {
         console.log("ERROR: ", error)
