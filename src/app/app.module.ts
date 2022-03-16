@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './core/authentication/login-form/login-form.component';
 import { InMemoryDataService } from '@app/mockData/in-memory-data.service';
+import { HomeModule } from './modules/home/home.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { InMemoryDataService } from '@app/mockData/in-memory-data.service';
     LoginFormComponent
   ],
   imports: [
+    HomeModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
