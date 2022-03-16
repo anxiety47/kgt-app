@@ -1,13 +1,14 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
   <div class="form-element">
-    <label for="login">Login</label>
-    <input id="login" type="text" formControlName="login">
+    <label for="email">Email</label>
+    <input id="email" type="text" formControlName="email">
   </div>
-
+  
   <div class="form-element">
     <label for="password">Hasło</label>
     <input id="password" type="password" formControlName="password">
+    <span class="error-message" *ngIf="errorMessage">{{errorMessage}}</span>
   </div>
 
   <button type="submit">Zaloguj</button>
