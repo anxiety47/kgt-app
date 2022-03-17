@@ -10,6 +10,7 @@ import { shareReplay, tap } from 'rxjs/operators';
 })
 export class AuthenticationService {
 
+  public isLoggedIn: boolean = false;
   private url = environment.apiUrl;
 
   constructor(private httpClient: HttpClient) { }
@@ -21,9 +22,16 @@ export class AuthenticationService {
       tap((user: User) => {
         console.log(user);
         localStorage.setItem('currentUser', JSON.stringify(user));
+        this.isLoggedIn = true;
         return user;
       }),
       shareReplay()
     )
+  }
+
+  logout(): void {
+    localStorage.removeItem('currentUser');
+    this.isLoggedIn = false;
+    // add redirection to login page?
   }
 }
