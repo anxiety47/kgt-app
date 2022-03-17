@@ -10,7 +10,7 @@ import { shareReplay, tap } from 'rxjs/operators';
 })
 export class AuthenticationService {
 
-  public isLoggedIn: boolean = false;
+  public isLoggedIn: boolean = !!localStorage.getItem('currentUser');
   private url = environment.apiUrl;
 
   constructor(private httpClient: HttpClient) { }
